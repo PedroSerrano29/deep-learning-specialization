@@ -1,0 +1,49 @@
+# =============================================================================
+# Tarefa 3 — Arquiteturas para Visão Computacional · Pedro Serrano
+# Dependências do notebook Tarefa3_Arquiteturas_Visao_Computacional_PedroSerrano.ipynb
+# (versões exatas com que o notebook foi testado)
+#
+# Requisitos: Python 3.11, 3.12 ou 3.13, de 64 bits.
+#   - Python 3.14: ainda não há TensorFlow estável para esta versão (o pip falha logo).
+#   - Python 3.10: estas versões do Keras, NumPy, pandas e scikit-learn exigem 3.11 ou superior.
+#   - Para ver as versões de Python instaladas no Windows: py -0
+#
+# Instalação (Windows, PowerShell), num ambiente virtual FORA da pasta do Google Drive
+# (o TensorFlow ocupa mais de 1 GB e o Drive tentaria sincronizá-lo; um caminho curto
+# também evita o erro de caminhos demasiado longos do Windows):
+#   py -3.12 -m venv C:\venvs\tokio-dl
+#   C:\venvs\tokio-dl\Scripts\Activate.ps1
+#   python -m pip install --upgrade pip
+#   pip install -r requirements.txt
+#   python -m ipykernel install --user --name tokio-dl --display-name "Python 3.12 (Tarefa 3 DL)"
+# Se o PowerShell bloquear a ativação: Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+# No VS Code, escolher depois o kernel "Python 3.12 (Tarefa 3 DL)" no canto superior direito
+# do notebook (Select Kernel > Jupyter Kernel). Sem o passo do ipykernel install, o VS Code
+# não encontra sozinho um ambiente em C:\venvs.
+#
+# Notas:
+#   - No Windows nativo, o TensorFlow corre só em CPU. Para usar a GPU NVIDIA, instalar no
+#     WSL2 (Ubuntu) com tensorflow[and-cuda]==2.21.0 em vez de tensorflow==2.21.0.
+#   - No Google Colab não é preciso instalar nada: o TensorFlow e o resto já vêm instalados.
+#   - Tempo de execução em CPU (8 núcleos lógicos, Windows 11): cerca de 90 min no total, dos quais
+#     ~76 min na ResNet50 (a afinação leva 13–16 min por época); a CNN, a LSTM e a GRU treinam em
+#     4–5 min cada. Com MODO_RAPIDO = True (secção 0.2), o notebook corre em ~2 min, só para testar.
+#   - Na primeira execução é preciso ligação à internet: o Fashion-MNIST (~30 MB) e os pesos
+#     da ResNet50 pré-treinada no ImageNet (~90 MB) são descarregados para ~/.keras.
+#   - Não usar o kernel "Python 3" de uma instalação global que tenha um pyzmq antigo (ver a
+#     nota do pyzmq abaixo): o TensorFlow falha com "DLL load failed while importing
+#     _pywrap_tensorflow_internal: Falha numa rotina de inicialização de DLL".
+# =============================================================================
+tensorflow==2.21.0      # inclui o Keras 3; no Windows nativo usa só a CPU
+keras==3.15.1
+numpy==2.4.4
+pandas==3.0.2
+matplotlib==3.10.8
+scikit-learn==1.8.0
+ipykernel==7.3.0        # kernel para correr o notebook no VS Code ou no Jupyter
+# pyzmq: dependência do ipykernel, fixada de propósito. Nas versões 25.x e anteriores, o wheel
+# de Windows trazia o seu próprio msvcp140.dll, antigo; o kernel carrega-o antes do TensorFlow e
+# o TensorFlow 2.21 deixa de conseguir inicializar. O ipykernel aceita pyzmq>=25, por isso, sem
+# esta linha, o pip não atualiza um pyzmq 25 que já esteja instalado no ambiente.
+pyzmq==27.2.0
+# jupyterlab            # descomentar só para abrir o notebook no browser em vez do VS Code

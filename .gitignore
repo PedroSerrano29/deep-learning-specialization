@@ -1,0 +1,34 @@
+# Ambientes virtuais - reconstroem-se a partir do requirements.txt
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Entregas zipadas: duplicam tudo o resto
+*.zip
+
+# Relatórios em Word: fica a versão PDF
+*.docx
+
+# Datasets. Os de licença aberta descarregam-se em runtime;
+# os do Kaggle não são meus para redistribuir.
+*.csv
+!modulo-3/resultados/*.csv
+
+# Modelos treinados
+*.h5
+*.keras
+*.pt
+*.pth
+
+# Sistema
+desktop.ini
+.DS_Store
+Thumbs.db

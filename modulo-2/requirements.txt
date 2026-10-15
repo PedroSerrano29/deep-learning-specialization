@@ -1,0 +1,96 @@
+# =============================================================================
+# Tarefa 2 - Modelos de Classificacao e Regressao com Redes Neuronais
+# Curso de Especializacao em Deep Learning - Modulo 2 - Pedro Serrano
+#
+# Pre-requisitos para executar Tarefa2_Classificacao_Regressao_PedroSerrano.ipynb
+# =============================================================================
+#
+# Python 3.12
+#   O notebook foi executado com Python 3.12.3 (ver o output da seccao
+#   "0. Configuracao"). O ambiente .venv desta pasta usa o Python 3.12.6.
+#
+# Instalacao de raiz (PowerShell, a partir desta pasta):
+#   py -3.12 -m venv .venv
+#   .\.venv\Scripts\Activate.ps1
+#   python -m pip install --upgrade pip
+#   python -m pip install -r requirements.txt
+#   python -m ipykernel install --user --name tarefa2-dl --display-name "Python 3.12 (Tarefa 2 DL)"
+#
+# Depois, no VS Code / JupyterLab, escolher esse kernel e correr o notebook de
+# cima a baixo (Run All). O treino demora cerca de 4 minutos em CPU:
+# ~91 s a classificacao, ~27 s a regressao e ~113 s a experiencia da seccao 3.2.
+
+
+# -----------------------------------------------------------------------------
+# 1) Deep learning - versoes exatas da execucao guardada no notebook
+# -----------------------------------------------------------------------------
+# Estas tres versoes estao impressas no output da primeira celula de codigo,
+# por isso ficam fixas: sao as que produziram os resultados do relatorio.
+tensorflow==2.21.0
+keras==3.15.1
+
+# -----------------------------------------------------------------------------
+# 2) Machine learning classico e dados
+# -----------------------------------------------------------------------------
+# scikit-learn: fetch_california_housing, train_test_split, StandardScaler,
+# LinearRegression e as metricas (classification_report, confusion_matrix,
+# mean_absolute_error, mean_squared_error, r2_score).
+# Versao tambem fixa, por estar impressa no notebook.
+scikit-learn==1.8.0
+
+# numpy e pandas: o notebook grava as versoes usadas em resultados/metricas.json
+# (chave "versoes"), mas nao as imprime em nenhum output, por isso aqui ficam
+# limites minimos em vez de versoes exatas. Depois de correr o notebook uma vez,
+# vale a pena abrir esse JSON e fixar aqui as versoes que ele registou.
+numpy>=1.26
+pandas>=2.2
+
+# -----------------------------------------------------------------------------
+# 3) Graficos
+# -----------------------------------------------------------------------------
+# matplotlib e a unica biblioteca cuja versao nao fica registada no
+# metricas.json. Minimo real do codigo: 3.5, por causa da assinatura
+# set_xticks(ticks, labels, ...) usada na matriz de confusao (celula 20);
+# antes da 3.5 era preciso set_xticklabels(). O minimo indicado e 3.8, a
+# primeira versao com suporte oficial a Python 3.12.
+matplotlib>=3.8
+
+# -----------------------------------------------------------------------------
+# 4) Ambiente Jupyter
+# -----------------------------------------------------------------------------
+# ipykernel chega para correr o notebook dentro do VS Code e traz o IPython,
+# de onde vem a funcao display() usada na celula 40.
+ipykernel>=6.29
+
+# Descomentar apenas para abrir o notebook no browser em vez do VS Code:
+# jupyterlab>=4.2
+
+
+# =============================================================================
+# NOTAS
+# =============================================================================
+#
+# Ligacao a internet na primeira execucao
+#   Os dois datasets nao estao neste repositorio; sao descarregados e guardados
+#   em cache automaticamente na primeira vez que o notebook corre:
+#     - Fashion-MNIST (~30 MB) via keras.datasets  -> ~/.keras/datasets
+#     - California Housing (~1.4 MB) via sklearn   -> ~/scikit_learn_data
+#   Nas execucoes seguintes ja nao e preciso rede.
+#
+# Treino em CPU
+#   O TensorFlow deixou de ter suporte nativo a GPU em Windows depois da versao
+#   2.10 (para GPU seria preciso WSL2), por isso em Windows o treino corre em
+#   CPU. E o que o proprio notebook regista: "GPU disponivel: nao (treino em
+#   CPU)". Os tempos indicados acima ja sao tempos de CPU.
+#
+# Espaco em disco
+#   A instalacao ocupa cerca de 1 GB, quase tudo do TensorFlow e das suas
+#   dependencias.
+#
+# Alternativa mais leve (Linux/macOS)
+#   Em Linux pode usar-se "tensorflow-cpu==2.21.0" em vez de "tensorflow" para
+#   um wheel bastante mais pequeno. Em Windows o wheel normal ja e so CPU.
+#
+# Pastas geradas pelo notebook
+#   O notebook cria sozinho, na pasta onde e executado, as pastas "figuras/"
+#   (8 PNG) e "resultados/" (metricas.json). Nao e preciso cria-las a mao.
