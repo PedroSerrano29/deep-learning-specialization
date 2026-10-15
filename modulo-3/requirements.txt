@@ -1,6 +1,6 @@
 # =============================================================================
 # Tarefa 3 — Arquiteturas para Visão Computacional · Pedro Serrano
-# Dependências do notebook Tarefa3_Arquiteturas_Visao_Computacional_PedroSerrano.ipynb
+# Dependências do notebook arquiteturas-visao-computacional.ipynb
 # (versões exatas com que o notebook foi testado)
 #
 # Requisitos: Python 3.11, 3.12 ou 3.13, de 64 bits.

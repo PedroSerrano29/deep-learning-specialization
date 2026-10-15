@@ -2,12 +2,12 @@
 # Tarefa 2 - Modelos de Classificacao e Regressao com Redes Neuronais
 # Curso de Especializacao em Deep Learning - Modulo 2 - Pedro Serrano
 #
-# Pre-requisitos para executar Tarefa2_Classificacao_Regressao_PedroSerrano.ipynb
+# Pre-requisitos para executar classificacao-e-regressao.ipynb
 # =============================================================================
 #
 # Python 3.12
-#   O notebook foi executado com Python 3.12.3 (ver o output da seccao
-#   "0. Configuracao"). O ambiente .venv desta pasta usa o Python 3.12.6.
+#   O notebook foi executado com Python 3.12.6 (ver o output da seccao
+#   "0. Configuracao").
 #
 # Instalacao de raiz (PowerShell, a partir desta pasta):
 #   py -3.12 -m venv .venv
